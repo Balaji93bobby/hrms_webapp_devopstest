@@ -1,0 +1,229 @@
+.main-page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 10mm auto;
+    background: white;
+    box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: bo;
+}
+
+.main-page.view-policy {
+    min-height: 200px;
+}
+
+.sub-page {
+    padding: 1cm;
+    /* padding-top: 0cm; */
+}
+
+@media print {
+    .main-page {
+        page-break-after: always;
+    }
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+@media print {
+    html,
+    body {
+        width: 210mm;
+        height: 297mm;
+    }
+
+    .main-page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}
+
+table tr td p {
+    text-align: justify !important;
+}
+
+.avatar_table tr,
+.avatar_table tr td {
+    border: 2px solid #dee2e6 !important;
+    padding: 5px !important;
+}
+
+.payslip_table {
+    width: 100%;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+table.payslip_table tr,
+table.payslip_table tr td {
+    border: 2px solid #0087c1;
+}
+table.payslip_table.ardens tr,
+table.payslip_table.ardens tr td
+{
+    border: 2px solid #ff530a;
+}
+.border-less {
+    border: 0px !important;
+}
+
+.payslip_table tr {
+    height: 12.55pt;
+}
+
+.payslip_table td {
+    width: 81.35pt;
+}
+
+table.payslip_table tr td p {
+    font-size: 9pt;
+    margin-top: 3pt;
+    margin-bottom: 3pt;
+    padding: 0px 5px;
+}
+
+.txt-left {
+    text-align: left !important;
+}
+
+
+.txt-right {
+    text-align: right !important;
+}
+
+.txt-center {
+    text-align: center !important;
+}
+
+.text-strong {
+    font-weight: 600;
+}
+
+.header-row {
+    height: 50px;
+}
+
+tr.bg-ash {
+    background-color: #9e9e9e5c;
+}
+
+.p3 {
+    padding: 3px;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+table.letter-format tr td,
+table.letter-format tr,
+table.letter-format tr td p {
+    border: 0;
+    font-size: 14px;
+}
+
+p.a {
+    text-align: justify !important;
+}
+.pad-top-5 {
+    padding-top: 5px;
+}
+.pad-bottom-5 {
+    padding-bottom: 5px;
+}
+
+.pt-pb-5 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.pt-20 {
+    padding-top: 20px;
+}
+
+.pt-pb-10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.pt-pb-15 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.pt-10 {
+    padding-top: 10px;
+}
+
+.pt-30 {
+    padding-top: 30px;
+}
+.pb-10 {
+    padding-bottom: 10px;
+}
+
+.pb-30 {
+    padding-bottom: 30px;
+}
+.pad-bottom-5 {
+    padding-bottom: 5px;
+}
+.pt-5 {
+    padding-top: 5px !important;
+}
+table.salary-table tr td {
+    border: 1px solid;
+    padding: 4px;
+    border-radius: 0 !important;
+}
+
+.border-bottom-line {
+    border-bottom: 1px solid !important;
+}
+th,
+td {
+    height: 30px;
+}
+
+.border-bottom-line-ash {
+    border-bottom: 1px solid #dadada !important;
+}
+
+.pad-bottom-40 {
+    padding-bottom: 40px;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+/* for brand avatar */
+
+table.avtatar-salary-table {
+    border: 1px solid;
+    border-collapse: separate;
+}
+
+table.payslip-avatarLive tr td,
+table.payslip-avatarLive tr  {
+    border: 1.5pt solid #ff00007d;
+}
+
+table.payslip-brandAvatar tr td,
+table.payslip-brandAvatar tr  {
+    border: 1.5pt solid #912789;
+}
+
+.not-justify{
+    text-align:initial !important;
+}

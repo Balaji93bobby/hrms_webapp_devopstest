@@ -1,0 +1,291 @@
+
+/* for sign-in button */
+
+.sign-in-btn {
+padding: 8px 0px !important;
+
+}
+
+
+
+.right-content {
+    background: #ffffff;    /*#f7f8f8*/
+}
+
+.login-bottom {
+    /*background-color: #375775;*/
+    background-position: center;
+    width: -webkit-fill-available;
+    position: absolute !important;
+    background: url(../images/login_img/Login_bottom.svg);
+    height: 100px;  /*100px*/
+    /* height: inherit; */
+    /* bottom: -283px; */
+    background-size: cover;
+    bottom: 0px;    /*0px*/
+    position: relative;
+}
+
+.carousel-item img {
+    margin-top: 25px;
+    /* height: 100%; */
+    width: 100%;
+}
+
+.login-left-content img {
+    width: 100%;
+    height: 500px;
+
+}
+
+.login-right-content {
+    position: absolute;
+    top: 50px;
+    background: transparent;
+    left: 0px;
+    width: 400px;
+    /* transform: translate(50px, 50px); */
+    margin: auto;
+    right: 0px;
+
+}
+
+.carousel-caption {
+    position: relative !important;
+    bottom: 0px !important;
+    font-size: 18px !important;
+    left: 0px !important;
+    color: #898787 !important;
+    font-weight: 600 !important;
+}
+
+
+.social-icons-wrapper a {
+    height: 40px;
+    width: 80px;
+    border-radius: 5px;
+    background: rgba(228, 227, 227, 0.719);
+    display: flex;
+    /* margin: 0px 10px; */
+    align-items: center;
+    justify-content: center;
+    /* box-shadow: inset -5px -5px 9px rgb(255 255 255 / 45%), inset 5px 5px 9px rgb(197 197 197 / 30%), rgb(0 0 0 / 16%) 0px 1px 4px; */
+}
+
+#section-head
+{
+    overflow: hidden;
+}
+
+
+
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    margin: 0 20px;
+    height: 1px !important;
+    background: #c1c1c1 !important;
+}
+
+.right-content {
+    /* background: #ffffff url(../images/login_img/Bg_circle_op75.svg); */
+    background: #ffffff ;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.left-content{
+    background-color: #f5f5f5;
+    height: 100%;
+}
+
+
+.carousel {
+    position: relative !important;
+}
+
+.carousel-indicators {
+    bottom: -60px !important;   /*-45px*/
+}
+
+.carousel-indicators li {
+
+    width: 10px !important;
+    height: 10px !important;
+    margin-right: 10px !important;
+    margin-left: 10px !important;
+    background-color: #b9b8b86e !important;
+    border-radius: 50% !important;
+    top: -55px !important;      /*-25px*/
+
+}
+
+.carousel-indicators li.active {
+    background-color: #375775 !important;
+}
+
+.textbox {
+    border-radius: 5px !important;
+}
+
+
+/* floating lable */
+.form-row {
+    position: relative;
+}
+
+.float-label {
+    position: absolute;
+    top: 6px;
+    left: 15px;
+    cursor: text;
+    color: #375775;
+    z-index: 5;
+
+    transition: all 0.2s ease-in-out;
+}
+
+.textbox::placeholder {
+    opacity: 0;
+    visibility: hidden;
+    color: transparent;
+}
+
+.textbox:focus {
+    outline: none;
+    /* border: 2px solid #375775; */
+}
+
+
+.textbox:focus~.float-label,
+.textbox:not(:placeholder-shown)~.float-label {
+    top: -9px;
+    padding: 0px 3px;
+    left: 12px;
+    font-size: 12px;
+    background-color: #fff;
+    color: #375775;
+    letter-spacing: 0.1em;
+}
+
+
+
+.bg-circle {
+    background: url(../images/login_img/login_circle.svg);
+    height: 100%;
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.available-app a img {
+    height: 30px !important;
+    width: 100px;
+}
+
+
+
+@media only screen and (min-width: 770px) and (max-width: 1099px) {
+    .carousel-item img {
+        height: 390px;  /*390px*/
+    }
+}
+
+/* @media only screen and (min-width: 992px) and (max-width: 1099px){
+    .carousel-item img {
+        height: 420px;
+    }
+} */
+
+
+
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+    .carousel-item img {
+        height: 400px;  /*580px*/
+    }
+}
+
+
+@media only screen and (min-width: 1400px){
+    .carousel-item img {
+        height: 440px;  /*580px*/
+    }
+}
+
+
+
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .carousel-item img {
+        height: 450px;
+        width: 100%;
+    }
+
+}
+
+@media only screen and (min-width:0px) and (max-width:399px) {
+    .carousel-item img {
+        height: 450px;
+        width: 100%;
+    }
+
+    .login-card {
+        width: 100%;
+        height: auto;
+    }
+
+    .social-icons-wrapper a {
+        height: 35px;
+        width: 60px;
+
+    }
+
+    .available-app a img {
+        height: 30px !important;
+        width: 80px;
+    }
+
+    .login-bottom {
+        display: none;
+    }
+
+
+}
+
+@media only screen and (min-width: 400px) and (max-width: 499px) {
+    .login-bottom {
+        display: none;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 500px) and (max-width: 768px) {
+    .carousel-item img {
+        width: 100%;
+        height: 400px;  /*400px*/
+
+    }
+    .available-app a img {
+        height: 30px !important;
+        width: 80px;
+    }
+
+    .login-bottom {
+        display: none;
+    }
+}
+
+
+.login-top-img{
+    height: 50px;
+    width: 180px;
+}
+
+.login-top-img img{
+    height: 100%;
+    width: 100%;
+}

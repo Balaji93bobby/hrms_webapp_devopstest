@@ -1,0 +1,10 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0; padding:0; }
+
+
+/* optional Container STYLES */
+.chart { height: auto; width: auto; margin: 5px; margin: 5px auto; border-radius: 3px; }
+.node { background-color: #405189; color: #FFF;border: 1px solid #000; border-radius: 3px; }
+.node p {  line-height: 20px;
+    height: auto;
+    font-weight: normal;
+    padding: 12px;  margin: 0; }

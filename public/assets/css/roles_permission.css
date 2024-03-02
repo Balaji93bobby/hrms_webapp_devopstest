@@ -1,0 +1,126 @@
+.search-bar-wrapper {
+    position: relative;
+}
+.search-bar-wrapper input {
+    text-indent: 20px;
+}
+.search-bar-wrapper input{
+
+}
+.search-bar-wrapper i {
+    position: absolute;
+    color: #c1c1c1;
+    top: 8px;
+    left: 8px;
+}
+
+.selected-user-container {
+    /* border: 1px solid var(--color-dark-ash); */
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.roles-table tr td {
+    min-width: 200px;
+}
+.roles-table tr td .role-descriptions {
+    text-align: initial;
+}
+
+.manage-button {
+    padding: 5px 35px;
+    background-color: transparent;
+    border: 1px solid var(--color-dark-ash);
+}
+
+/* for chips */
+
+.chip {
+    border-radius: 25px;
+    background-color: #f1f1f1;
+    padding: 5px;
+    width: fit-content;
+    /* height: 20px; */
+    display: flex;
+    min-height: 26px;
+    padding-right: 15px;
+}
+
+.chip .chips-img-xs {
+    height: 20px;
+    width: 20px;
+}
+.chip .chips-img-sm {
+    height: 30px;
+    width: 30px;
+}
+
+.closebtn-wrapper {
+    color: #888;
+    font-weight: bold;
+    background: #dddadb;
+    display: flex;
+    height: 15px;
+    align-items: center;
+    width: 15px;
+    border-radius: 50%;
+    text-align: center;
+    justify-content: center;
+}
+
+.closebtn:hover {
+    color: #000;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+.border-focus-none:focus {
+    border-color: none;
+}
+
+/* privilege */
+.accordion-item .accordion-header .accordion-button,
+.accordion-item .accordion-header .accordion-button.collapsed {
+    background-color: #dbd8d96b !important;
+}
+.accordion-item .accordion-header .accordion-button:not(.collapsed) {
+    background-color: #c5ddf78f !important;
+    font-weight: 500;
+    color:var(--vz-vertical-menu-sub-item-color);
+}
+
+.privileges-list {
+    margin-left: 30px;
+    color: #888;
+
+
+}
+
+.privileges-list > li div,
+.privileges-list > li span {
+    line-height: 20px;
+}
+.privileges-list > li div {
+    display: flex;
+    align-items: center;
+
+    height: 15px;
+}
+.privileges-list > li div {
+    margin-bottom: 10px;
+}
+.privileges-list > li div input {
+    height: 15px;
+    width: 15px;
+}
+
+.privileges-list > li div input:checked + span {
+    color: var(--color-dark-ash);
+    font-weight: 500;
+
+}
+
+.box-shadow-none:focus{
+    box-shadow: none;
+}

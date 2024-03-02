@@ -1,0 +1,15 @@
+.step-form {
+    background-color: bisque;
+    .-wrpper {
+        display: contents;
+    }
+    ul {
+        display: inline-flex;
+        list-style: none;
+
+        .content {
+        }
+    }
+}
+
+

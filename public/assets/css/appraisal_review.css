@@ -1,0 +1,236 @@
+.appraisal-user {
+    height: 90px !important;
+    width: 90px !important;
+}
+.appraisal-right-content,
+.appraisal-left-content {
+    background-color: #c1d3e3 !important;
+    /* margin: 10px 0px 0px; */
+}
+
+/* for kpi all table */
+table.kpi_appraisal-table tr th table.kpi_appraisal-table tbody tr th {
+    border: 1px solid #fff;
+    vertical-align:text-top;
+}
+table.kpi_appraisal-table tbody tr:last-child th {
+    border-bottom: 1px solid #002f56 !important;
+}
+
+table.kpi_appraisal-table tr td {
+    border: 1px solid #002f56;
+}
+
+table.kpi_appraisal-table tr td textarea,
+table.kpi_appraisal-table tr th textarea {
+    width: 100%;
+    border:none;
+
+}
+table.kpi_republish_table tbody tr th textarea,
+table.kpi_republish_table tbody tr td textarea {
+    height: 50px ;
+}
+table.kpi_republish_table tbody tr td {
+    padding: 0px 4px;
+}
+
+
+
+/* table.kpi_appraisal-table tr th:nth-child(1),
+table.kpi_appraisal-table tr th:nth-child(2) {
+    text-align: left;
+} */
+table.kpi_appraisal-table td:nth-child(1) {
+    text-align: inherit !important;
+    width: 300px;
+}
+table.kpi_appraisal-table tbody tr th {
+    background: #002f56;
+}
+table.kpi_appraisal-table tbody tr td textarea {
+    color: #002f56;
+}
+
+table.kpi_appraisal-table tbody tr th {
+
+    border-bottom-left-radius: 0px !important;
+}
+table.kpi_appraisal-table tbody tr th  textarea{
+    color: #fff;
+    background: transparent;
+
+}
+table.kpi_appraisal-table tbody tr th {
+    min-width: 250px;
+}
+
+/* table#kpiTable tbody tr td textarea {
+    padding: 3px 4px;
+} */
+
+
+
+table.kpi_appraisal-table tbody tr th textarea,
+table.kpi_appraisal-table tbody tr td:nth-child(2) textarea,
+table.kpi_appraisal-table tbody tr td textarea {
+    resize: none;
+    min-height: 50px;
+    text-align: center;
+}
+/* tr:first-child  th:nth-child(2) {
+    border-top-left-radius: 6px !important;
+} */
+
+tr:last-child th:first-child {
+    /* border-bottom-left-radius: 6px !important; */
+    border-left: 0px;
+}
+
+tr:last-child td:last-child {
+    border-top-right-radius: 6px !important;
+    /* border-right: 0px; */
+}
+table.rating_table tr td {
+    text-align: center;
+}
+table.rating_table tbody {
+    border-left: 1px solid #002f56;
+    border-right: 1px solid #002f56;
+}
+table.rating_table tr:first-child th:first-child {
+    border-top: 1px solid #002f56;
+    border-left: 1px solid #002f56;
+    border-right: 1px solid #002f56;
+    border-radius: 0;
+}
+table.rating_table tr:last-child th:first-child {
+    border-bottom: 1px solid #002f56;
+    border-radius: 0 !important;
+}
+.appraisal-right-content .input-wrap {
+    width: 100%;
+    /* border: 1px solid; */
+    padding: 3px 15px;
+    border-radius: 5px;
+    background: #f4faff;
+    display: flex;
+    align-items: center;
+}
+.input-wrap p {
+    color: #002f56;
+    font-weight: 600;
+    font-size: smaller;
+}
+.input-wrap .appraisal-box {
+    padding: 3px 10px;
+    flex: none;
+    text-align: center;
+}
+
+.left-content ul li {
+    margin-bottom: 12px;
+}
+
+.e-table > :not(caption) > * > * {
+    border-bottom-width: 0px !important;
+    padding: 0.45rem 0.6rem !important;
+}
+
+.e-table .e-table,
+.e-table > thead {
+    border: 0px !important;
+}
+
+.table-bordered .table-bordered > :not(caption) > * > * {
+    border-top-width: 0px !important;
+    border-bottom-width: 0px !important;
+}
+
+.inp-text {
+    height: 40px;
+    width: auto;
+    word-break: break-word;
+}
+
+.table-content table th {
+    background: var(--vz-header-bg-dark);
+    width: 350px;
+    color: #fff;
+}
+
+.table-content textarea {
+    border: 0px;
+    outline: none;
+}
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('{{ URL::asset("assets/images/loader.gif") }}') 50% 50% no-repeat rgb(249, 249, 249);
+    opacity: 0.4;
+}
+
+.btn-light {
+    padding: 4px;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+table.kpi_appraisal-table tr,
+table.kpi_appraisal-table th,
+table.kpi_appraisal-table th div {
+    text-align: center;
+
+}
+table.kpi_appraisal-table tr td{
+    vertical-align:top;
+}
+
+/* table.kpi_appraisal-table tr:nth-child(1n) td:nth-child(2) {
+    text-align: initial ;
+} */
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+}
+
+.less_btn {
+    content: "Less";
+}
+.more_btn {
+    content: "More";
+}
+
+.kpi_userImg {
+    height: 120px !important;
+    width: 120px !important;
+}
+
+.appraisal_rating .progress {
+    height: 7px;
+}
+.appraisal_reviewer tr td:nth-child(8) div{
+
+    width: 200px;
+
+}

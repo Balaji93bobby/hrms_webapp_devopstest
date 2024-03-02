@@ -1,0 +1,109 @@
+.calender-mid_content .b-line {
+    border-bottom: 1px solid #dcd9da;
+}
+
+.calender-mid_content {
+}
+.showEmployee_attendance .user_pic {
+    width: 40px;
+    height: 40px;
+}
+.showEmployee_attendance ul li.list_employee_attendance:hover {
+    background-color: #ebebeb;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* li.list_employee_attendance .active{
+   background-color: #b7b7b7 !important;
+   border: 1px solid transparent !important;
+   border-color:transparent !important;
+} */
+
+._container-calendar {
+    position: relative;
+    overflow: auto;
+}
+._container-calendar:hover {
+    /* overflow: hidden scroll; */
+}
+.calendar-wrapper ._button-container-calendar {
+    background-color: transparent;
+    z-index: 2;
+}
+/*.calendar-wrapper ._button-container-calendar ._monthAndYear{
+    display: none;
+} */
+.calendar-wrapper ._button-container-calendar .previous,
+.calendar-wrapper ._button-container-calendar .next {
+    color: #003056;
+    border: 1px solid #003056;
+    font-size: 15px;
+    height: 30px;
+    width: 30px;
+}
+
+._container-calendar ._table-calendar {
+    position: absolute;
+    top: 2px;
+    /* height: auto; */
+    width: 1000px;
+    border-spacing: 4px;
+    border-collapse: initial;
+    margin-top: 50px;
+}
+
+._container-calendar ._table-calendar tr th {
+    font-size: 16px;
+    padding-bottom: 20px;
+    color: #ff4100;
+}
+
+._container-calendar ._table-calendar tr th:first-child {
+    padding-left: 30px;
+}
+._container-calendar ._table-calendar tr th:last-child {
+    padding-right: 30px;
+}
+._container-calendar ._table-calendar tr td {
+    height: 96px;
+    box-shadow: rgb(9 30 66 / 25%) 0px 4px 8px -2px, rgb(9 30 66 / 8%) 0px 0px 0px 1px;
+    width: auto;
+    min-width: 150px;
+    margin: 36px;
+    padding: 10px;
+    border-radius: 5px;
+    -moz-box-shadow: -1px -8px 3px -5px rgba(0, 0, 0, 0.23);
+}
+._container-calendar ._table-calendar tr td .show_date {
+    font-weight: 600;
+    font-size: 15px;
+    color: #003156;
+
+    text-align: start;
+}
+
+._container-calendar ._table-calendar tr ._date-picker:nth-child(1) .show_date {
+    color: #b7b7b7 !important;
+}
+
+._container-calendar ._table-calendar tr ._date-picker:nth-child(7) .show_date {
+    color: #b7b7b7 !important;
+}
+._container-calendar ._table-calendar tr ._date-picker.selected p::after {
+    opacity: 0;
+}
+
+._container-calendar ._table-calendar tr ._date-picker.selected .show_date {
+    font-size: 16px;
+    color: #ff0900;
+}
+
+.calendar_icon {
+    height: 15px;
+    width: 15px;
+}
+
+.list_employee_attendance.active a.employee_list_item {
+    background-color: #e7e7e7;
+}

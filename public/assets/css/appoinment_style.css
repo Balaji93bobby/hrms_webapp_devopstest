@@ -1,0 +1,10 @@
+.appointment-letter {
+  padding: 30px 60px;
+}
+.appointment-letter td {
+  padding: 5px 10px;
+}
+.appointment-letter table {
+  width: 100%;
+}
+

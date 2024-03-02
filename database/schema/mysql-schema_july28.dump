@@ -1,0 +1,819 @@
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+DROP TABLE IF EXISTS `bank_list`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bank_list` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `bank_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `min_length` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `max_length` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'A',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `countries_list`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `countries_list` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `country_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country_code` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dialing_code` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `currency_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `currency_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `timezone` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'A',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `failed_jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `model_has_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `model_has_permissions` (
+  `permission_id` bigint(20) unsigned NOT NULL,
+  `model_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
+  KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`),
+  CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `model_has_roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `model_has_roles` (
+  `role_id` bigint(20) unsigned NOT NULL,
+  `model_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) unsigned NOT NULL,
+  `created` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`role_id`,`model_id`,`model_type`),
+  KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`),
+  CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `notifications`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `notifications` (
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notifiable_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notifiable_id` bigint(20) unsigned NOT NULL,
+  `data` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `read_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `notifications_notifiable_type_notifiable_id_index` (`notifiable_type`,`notifiable_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `password_resets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `permissions` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `personal_access_tokens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `tokenable_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) unsigned NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `poll_voting_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `poll_voting_details` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `polling_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `selected_option` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `polling_questions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `polling_questions` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `question` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `options` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `role_has_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `role_has_permissions` (
+  `permission_id` bigint(20) unsigned NOT NULL,
+  `role_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`permission_id`,`role_id`),
+  KEY `role_has_permissions_role_id_foreign` (`role_id`),
+  CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `roles` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `state`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `state` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `country_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country_code` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `state_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'A',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `active` smallint(6) NOT NULL DEFAULT 1,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `avatar` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_announcement`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_announcement` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `ann_author_id` int(11) NOT NULL,
+  `title_data` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details_data` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_publish` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_asset_inventories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_asset_inventories` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `asset_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `asset_type` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `asset_status` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `serial_number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `warranty` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vendor` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `assignee` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `assigned_date` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `invoice` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_client_master`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_client_master` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `client_code` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `client_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contract_start_date` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contract_end_date` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cin_number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_tan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_pan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gst_no` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `epf_reg_number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `esic_reg_number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `prof_tax_reg_number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lwf_reg_number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `authorised_person_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `authorised_person_designation` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `authorised_person_contact_number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `authorised_person_contact_email` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `billing_address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shipping_address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `doc_uploads` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subscription_type` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_config_pms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_config_pms` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `selected_columns` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `selected_head` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `column_header` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_dashboard_posts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_dashboard_posts` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `author_id` int(11) NOT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `post_image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_department`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_department` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'A',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_employee_actions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_employee_actions` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `action_type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `action_message` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `action_status` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `trigger_date` datetime DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_employee_attendance`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_employee_attendance` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `checkin_time` datetime DEFAULT NULL,
+  `checkout_time` datetime DEFAULT NULL,
+  `shift_type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `leave_type_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_employee_compensatory_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_employee_compensatory_details` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `basic` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hra` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Statutory_bonus` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `child_education_allowance` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `food_coupon` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lta` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `special_allowance` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `other_allowance` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gross` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `epf_employer_contribution` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `esic_employer_contribution` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `insurance` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `graduity` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cic` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `epf_employee` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `esic_employee` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `professional_tax` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `labour_welfare_fund` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `net_income` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_employee_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_employee_details` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `userid` int(11) DEFAULT NULL,
+  `emp_no` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `doj` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dol` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `location` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dob` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `father_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pan_number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pan_ack` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `aadhar_number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `uan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `epf_number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `esic_number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `marrital_status` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `basic` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hra` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `child_edu_allowance` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `spl_alw` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `total_fixed_gross` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `epfemployer` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `esicemployer` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ctc` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `epfemployee` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `esicemployee` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pt` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `net` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `esic_applicability` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile_number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bank_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bank_ifsc_code` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bank_account_number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `present_address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `permanent_address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `father_age` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mother_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mother_age` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `spouse_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `spouse_age` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `kid_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `kid_age` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `aadhar_card_file` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `aadhar_card_backend_file` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pan_card_file` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `passport_file` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `voters_id_file` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dl_file` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `education_certificate_file` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reliving_letter_file` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `blood_group` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_employee_experiences`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_employee_experiences` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `emp_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `company_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `job_position` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `period_from` date NOT NULL,
+  `period_to` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_employee_hierarchies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_employee_hierarchies` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `child_count` smallint(6) NOT NULL,
+  `child_nodes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_employee_office_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_employee_office_details` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `emp_id` int(11) NOT NULL,
+  `user_id` int(5) NOT NULL,
+  `department_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `process` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `designation` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cost_center` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `confirmation_period` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `holiday_location` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `l1_manager_code` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `l1_manager_designation` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `l1_manager_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `l2_manager_code` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `l2_manager_designation` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `l2_manager_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `l3_manager_code` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `l3_manager_designation` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `l3_manager_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `l4_manager_code` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `l4_manager_designation` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `l4_manager_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `work_location` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `officical_mail` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `official_mobile` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `emp_notice` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_employee_payslip`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_employee_payslip` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `EMP_NO` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `EMP_NAME` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Gender` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `DESIGNATION` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `DEPARTMENT` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `DOJ` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `LOCATION` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `DOB` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Father_Name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `PAN_Number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Aadhar_Number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `UAN` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `EPF_Number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ESIC_Number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Bank_Name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Account_Number` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Bank_IFSC_Code` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `PAYROLL_MONTH` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `BASIC` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `HRA` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `CHILD_EDU_ALLOWANCE` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `SPL_ALW` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `TOTAL_FIXED_GROSS` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `MONTH_DAYS` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Worked_Days` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Arrears_Days` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `LOP` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Earned_BASIC` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `BASIC_ARREAR` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Earned_HRA` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `HRA_ARREAR` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Earned_CHILD_EDU_ALLOWANCE` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `CHILD_EDU_ALLOWANCE_ARREAR` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Earned_SPL_ALW` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `SPL_ALW_ARREAR` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Overtime` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `TOTAL_EARNED_GROSS` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `PF_WAGES` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `PF_WAGES_ARREAR_EPFR` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `EPFR` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `EPFR_ARREAR` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `EDLI_CHARGES` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `EDLI_CHARGES_ARREARS` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `PF_ADMIN_CHARGES` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `PF_ADMIN_CHARGES_ARREARS` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `EMPLOYER_ESI` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Employer_LWF` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `CTC` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `EPF_EE` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `EPF_EE_ARREAR` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `EMPLOYEE_ESIC` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `PROF_TAX` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `TDS` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `SAL_ADV` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `CANTEEN_DEDN` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `OTHER_DEDUC` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `LWF` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `TOTAL_DEDUCTIONS` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `NET_TAKE_HOME` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Rupees` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `EL_Opn_Bal` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Availed_EL` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Balance_EL` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Rename` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Email` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Greetings` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_employee_pms_goals_table`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_employee_pms_goals_table` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `self_kpi_review` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `self_kpi_percentage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `self_kpi_comments` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `manager_kpi_review` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `manager_kpi_percentage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `manager_kpi_comments` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hr_kpi_review` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hr_kpi_percentage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hr_kpi_comments` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `kpi_table_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `assignment_period` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `coverage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reviewer_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `employee_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mail_link` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `author_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `employee_kpi_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_employee_submitted` tinyint(4) DEFAULT NULL,
+  `is_employee_accepted` tinyint(4) DEFAULT NULL,
+  `is_manager_submitted` tinyint(4) DEFAULT NULL,
+  `is_manager_approved` tinyint(255) DEFAULT NULL,
+  `is_hr_submitted` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `appraiser_comment` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `employee_rejection_comments` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `manager_rejection_comments` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_client_master`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_client_master` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `short_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `login_instruction` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `client_logo` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `background_img` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_general_settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_general_settings` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `workflow_component` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `associate_wise_template` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `kra_competency` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `increment_percentage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `report_component` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rating_preference` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `annual_score_calculation` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `show_employee_review_rating` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `employee_review_components` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `percentage_components` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `percentage_groupwise` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `finalscore_calculation_method` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `achievement_based_rating` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `show_all_managers_to_employee` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `show_rated_managers` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rating_period_based` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rating_component` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_holidays`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_holidays` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `holiday_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `holiday_date` datetime DEFAULT NULL,
+  `holiday_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_kpi_table`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_kpi_table` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `kpi_rows` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `author_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `author_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_leaves`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_leaves` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `leave_type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `leave_max_limit` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_performance_apraisal_questions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_performance_apraisal_questions` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `dimension` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `kpi` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `operational_definition` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `measure` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `frequency` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `target` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `stretch_target` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `source` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `kpi_weightage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `author_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `author_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_reviewforms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_reviewforms` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `questions` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `author_id` int(11) NOT NULL,
+  `author_name` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_reviewquestions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_reviewquestions` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `question` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `option_1` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `option_2` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `option_3` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `option_4` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `option_5` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answer` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `author_id` int(11) NOT NULL,
+  `author_name` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vmt_reviewuserforms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vmt_reviewuserforms` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `form_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1);
+INSERT INTO `migrations` VALUES (2,'2014_10_12_100000_create_password_resets_table',1);
+INSERT INTO `migrations` VALUES (3,'2019_08_19_000000_create_failed_jobs_table',1);
+INSERT INTO `migrations` VALUES (4,'2019_12_14_000001_create_personal_access_tokens_table',1);
+INSERT INTO `migrations` VALUES (5,'2022_05_10_023444_create_permission_tables',1);
+INSERT INTO `migrations` VALUES (6,'2022_05_18_123444_create_vmt_360_questions_table',2);
+INSERT INTO `migrations` VALUES (7,'2022_05_20_123444_create_vmt_360_forms_table',3);
+INSERT INTO `migrations` VALUES (8,'2022_05_22_123444_create_vmt_360_user_forms_table',4);
+INSERT INTO `migrations` VALUES (9,'2022_05_24_123444_create_vmt_360_employee_hierarchy_table',5);
+INSERT INTO `migrations` VALUES (10,'2022_05_31_100000_create_vmt_general_settings_table',6);
+INSERT INTO `migrations` VALUES (11,'2022_06_05_123456_create_vmt_employee_payslip_table',7);
+INSERT INTO `migrations` VALUES (12,'2022_06_07_123456_create_vmt_client_master_table',8);
+INSERT INTO `migrations` VALUES (13,'2022_06_08_123456_create_vmt_employees_table',9);
+INSERT INTO `migrations` VALUES (14,'2022_06_13_111222_create_vmt_performance_apraisal_questions_table',10);
+INSERT INTO `migrations` VALUES (15,'2022_06_22_123123_create_vmt_employee_office_details_table',11);
+INSERT INTO `migrations` VALUES (16,'2022_06_22_125125_create_vmt_client_master_table',11);
+INSERT INTO `migrations` VALUES (17,'2022_06_26_121212_create_vmt_kpi_table',12);
+INSERT INTO `migrations` VALUES (18,'2022_06_27_022837_add_userid_to_vmt_employee_details_table',12);
+INSERT INTO `migrations` VALUES (19,'2022_06_27_121212_create_vmt_employee_pms_goals_table',12);
+INSERT INTO `migrations` VALUES (20,'2022_06_28_150516_add_self_review_to_vmt_employee_pms_goals_table_table',12);
+INSERT INTO `migrations` VALUES (21,'2022_07_01_032937_add_manager_emp_id_to_vmt_employee_details_table',13);
+INSERT INTO `migrations` VALUES (22,'2022_07_02_061836_change_vmt_employee_details_table_column',14);
+INSERT INTO `migrations` VALUES (24,'2022_07_03_224136_create_vmt_leaves_table',15);
+INSERT INTO `migrations` VALUES (25,'2022_07_03_224453_create_vmt_employee_actions_table',15);
+INSERT INTO `migrations` VALUES (26,'2022_07_04_072245_add_dummy_data_to_vmt_performance_apraisal_questions_table',16);
+INSERT INTO `migrations` VALUES (27,'2022_07_05_041200_add_files_column_to_vmt_employee_details_table',17);
+INSERT INTO `migrations` VALUES (28,'2014_10_12_000000_create_countries_list_table',18);
+INSERT INTO `migrations` VALUES (29,'2014_10_12_000000_create_state_table',18);
+INSERT INTO `migrations` VALUES (30,'2014_10_12_000000_create_bank_list_table',19);
+INSERT INTO `migrations` VALUES (31,'2014_10_12_000000_create_vmt_employee_compensatory_details_table',20);
+INSERT INTO `migrations` VALUES (32,'2014_10_12_000000_create_vmt_employee_experience_table',21);
+INSERT INTO `migrations` VALUES (33,'2014_10_12_000000_create_poll_voting_details_table',22);
+INSERT INTO `migrations` VALUES (34,'2014_10_12_000000_create_polling_questions_table',22);
+INSERT INTO `migrations` VALUES (35,'2022_07_20_073139_create_notifications_table',22);
+INSERT INTO `migrations` VALUES (36,'2022_07_20_075344_create_vmt_holidays_table',22);
+INSERT INTO `migrations` VALUES (37,'2022_07_03_221908_create_vmt_employee_attendances_table',23);
+INSERT INTO `migrations` VALUES (38,'2022_07_20_082329_add_user_id_to_vmt_employee_attendance_table',24);
+INSERT INTO `migrations` VALUES (39,'2022_07_21_084956_create_vmt_asset_inventories_table',25);
+INSERT INTO `migrations` VALUES (43,'2022_07_25_050341_add_bloodgroup_to_employee_details_table',26);
+INSERT INTO `migrations` VALUES (44,'2022_07_26_051833_create_vmt_config_pms_table',27);
+INSERT INTO `migrations` VALUES (45,'2022_07_26_091550_create_vmt_department_table',27);
+INSERT INTO `migrations` VALUES (46,'2022_07_26_145428_add_active_to_users_table',27);
+INSERT INTO `migrations` VALUES (47,'2022_07_26_111410_vmt_announcement',28);
+INSERT INTO `migrations` VALUES (48,'2022_07_23_120549_create_vmt_dashboard_posts_table',29);

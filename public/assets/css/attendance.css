@@ -1,0 +1,109 @@
+.nav-tabs-dashed .nav-item .attendances-analyist-tab {
+    background-color: #dfdfdf;
+    color: #c2c1bf;
+    font-size: 14px;
+    padding: 6px 25px;
+    margin: 0px;
+}
+
+/* .nav-tabs-dashed .nav-item .attendances-analyist-tab:first-child {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.nav-tabs-dashed .nav-item .attendances-analyist-tab:last-child {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+} */
+.nav-tabs-dashed .nav-item .attendances-analyist-tab.active {
+    background-color: #002f56 !important;
+    color: #fff !important;
+    border: none !important;
+    position: relative;
+    z-index: 2;
+    font-size: 14px;
+    border-radius: 5px !important;
+}
+.nav-tabs-dashed .nav-item .margin-left-mainases {
+    position: relative;
+    margin-left: -8px;
+    z-index: 1;
+}
+/* .form-check-input:checked {
+    background-color: #002f56 !important;
+} */
+.bottom-content .check-box {
+    border: 1px solid #ced4da;
+    height: 15px !important;
+    height: 13px !important;
+    padding: 7px;
+    margin: 5px;
+}
+
+.leave_det_calendar .casual_leave,
+.leave_det_calendar .sick_leave,
+.leave_det_calendar .floater_leave,
+.leave_det_calendar .maternity_leave {
+    position: relative;
+    margin-left: 10px;
+}
+
+.leave_det_calendar .casual_leave::before,
+.leave_det_calendar .sick_leave::before,
+.leave_det_calendar .floater_leave::before,
+.leave_det_calendar .maternity_leave::before {
+    position: absolute;
+    content: "";
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+
+    left: -8px;
+    margin: 7px 0px 0px 0px;
+}
+.leave_det_calendar .casual_leave::before {
+    background-color: #f00;
+}
+.leave_det_calendar .sick_leave::before {
+    background-color: #5eff00;
+}
+
+.leave_det_calendar .floater_leave::before {
+    background-color: #ffee00;
+}
+
+.leave_det_calendar .maternity_leave::before {
+    background-color: #0011ff;
+}
+
+.date-wrapper .month {
+    height: 25px;
+    /* width: 25px; */
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.pendingLeave_notify {
+    position: relative;
+}
+
+.pendingLeave_notify span {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+}
+
+/* leave */
+
+.leaveSettings_table .gridjs-table tr td:first-child {
+    width: auto;
+}
+
+.attendance_gridjs .gridjs-table > tbody > tr > td:nth-child(6),
+.attendance_gridjs .gridjs-table > tbody > tr > td:nth-child(7) {
+    min-width: 250px;
+    white-space: pre-wrap !important;
+}
+
+.attendance_gridjs .gridjs-table > tbody > tr > td:nth-child(1) {
+    text-align: left;
+}

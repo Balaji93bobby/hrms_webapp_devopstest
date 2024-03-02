@@ -1,0 +1,79 @@
+.drag-area {
+    border: 2px dashed #5256ad;
+    height: 200px;
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.drag-area.active {
+    border: 2px solid #fff;
+}
+.drag-area .icon {
+    font-size: 30px;
+    color: #5c5c5c;
+}
+.drag-area h6,
+.drag-area header,
+.drag-area button {
+    color: #5256ad;
+}
+.drag-area header {
+    font-size: 12px;
+    font-weight: 500;
+    color: #5256ad;
+}
+.drag-area span {
+    font-weight: 500;
+    color: #5c5c5c;
+}
+.drag-area button {
+    border: 1px solid #5256ad;
+}
+.drag-area img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* for table */
+
+.createHoliday-wrapper {
+    position: relative;
+}
+.createHoliday-wrapper .filter-set {
+    position: absolute;
+    right: 0px;
+}
+.filter-set button {
+    z-index: 1;
+}
+.filter .assign-to{
+    width: 200px;
+}
+.filter select {
+    width: 200px;
+    position: relative;
+    text-indent: 20px;
+    z-index: 1;
+    cursor: pointer;
+}
+.filter i {
+    position: absolute;
+    z-index: 2;
+    top: 8px;
+    left: 215px;
+}
+
+.img-cotainer {
+    border: 2px solid #80808047;
+    border-radius: 5px;
+    border-style: dashed;
+    padding: 10px;
+    height: 200px;
+    width: 100%;
+}
+

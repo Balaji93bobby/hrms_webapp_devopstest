@@ -1,0 +1,19 @@
+.page-header-user-dropdown span{
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: aliceblue;
+
+}
+
+.topbar-logo{
+    height: 30px !important;
+    width: 100px !important;
+}
+.topbar-logo img{
+    height: 100%;
+    width: 100%;
+}

@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    // .tw-card {
+    //     background-color: theme("colors.white");
+    //     border-radius: theme("borderRadius.lg");
+    //     padding: theme("spacing.6") theme("spacing.6");
+    //     width: 100%;
+    //     box-shadow: theme("boxShadow.xl");
+    // }
+
+    $EvenCard: (1:theme('colors.orange.100'),
+    2:theme('colors.red.100'),
+    3:theme('colors.stone.100'),
+    4:theme('colors.green.100'),
+    5:theme('colors.indigo.100'),
+    6:theme('colors.pink.100'),
+    7:theme('colors.amber.100'),
+    8:theme('colors.cyan.100'),
+    9:theme('colors.blue.100'),
+    10:theme('colors.slate.100'),
+);
+
+
+    $colors-100: (1:theme('colors.orange.100'),
+        2:theme('colors.red.100'),
+        3:theme('colors.stone.100'),
+        4:theme('colors.green.100'),
+        5:theme('colors.indigo.100'),
+        6:theme('colors.pink.100'),
+        7:theme('colors.amber.100'),
+        8:theme('colors.cyan.100'),
+        9:theme('colors.blue.100'),
+        10:theme('colors.slate.100'),
+    );
+    $colors-400: (1:theme('colors.orange.400'),
+        2:theme('colors.red.400'),
+        3:theme('colors.stone.400'),
+        4:theme('colors.green.400'),
+        5:theme('colors.indigo.400'),
+        6:theme('colors.pink.400'),
+        7:theme('colors.amber.400'),
+        8:theme('colors.cyan.400'),
+        9:theme('colors.blue.400'),
+        10:theme('colors.slate.400'),
+    );
+
+    @each $key,
+    $values-100 in $colors-100 {
+        @for $i from 1 through 15 {
+            .dynamic-card {
+                &:nth-child(#{$key}) {
+                    background-color: $values-100;
+                    border-left: .4em solid;
+                }
+            }
+            .dynamic-card-without-border {
+                &:nth-child(#{$key}) {
+                    background-color: $values-100;
+                }
+            }
+        }
+    }
+    @each $key,
+    $values-100 in $EvenCard {
+        @for $i from 1 through 15 {
+            .even-card {
+                &:nth-child(#{$key}) {
+                    background-color: $values-100;
+                }
+            }
+        }
+    }
+
+    .dynamic-card {
+        &:nth-child(1) {
+            border-left: .4em solid  theme('colors.orange.400');
+        }
+        &:nth-child(2) {
+            border-left: .4em solid  theme('colors.red.400');
+        }
+        &:nth-child(3) {
+            border-left: .4em solid  theme('colors.stone.400');
+        }
+        &:nth-child(4) {
+            border-left: .4em solid  theme('colors.green.400');
+        }
+        &:nth-child(5) {
+            border-left: .4em solid  theme('colors.indigo.400');
+        }
+        &:nth-child(6) {
+            border-left: .4em solid  theme('colors.pink.400');
+        }
+        &:nth-child(7) {
+            border-left: .4em solid  theme('colors.amber.400');
+        }
+        &:nth-child(8) {
+            border-left: .4em solid  theme('colors.cyan.400');
+        }
+        &:nth-child(9) {
+            border-left: .4em solid  theme('colors.blue.400');
+        }
+        &:nth-child(10) {
+            border-left: .4em solid  theme('colors.slate.400');
+        }
+    }
+
+
+}

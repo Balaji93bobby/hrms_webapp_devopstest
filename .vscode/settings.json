@@ -1,0 +1,14 @@
+{
+    "workbench.colorCustomizations": {
+        "tab.activeBorderTop": "#ffffff",
+        "tab.activeBackground": "#045f78"
+    },
+    "vue3snippets.enable-compile-vue-file-on-did-save-code": false,
+    "cSpell.words": [
+        "badgedirective",
+        "confirmationservice"
+    ],
+    "liveServer.settings.port": 5501,
+    "css.completion.triggerPropertyValueCompletion": true,
+    "css.format.braceStyle": "expand"
+}

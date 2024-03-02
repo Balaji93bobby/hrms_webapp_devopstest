@@ -1,0 +1,199 @@
+.main-page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 10mm auto;
+    background: white;
+    box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: bo;
+}
+
+.sub-page {
+    padding: 1cm;
+}
+
+@media print {
+    .main-page {
+        page-break-after: always;
+    }
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+@media print {
+    html,
+    body {
+        width: 210mm;
+        height: 297mm;
+    }
+
+    .main-page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}
+
+/* policy version table */
+
+table.policy_table,
+table.policy-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #006bb1;
+    text-align: justify;
+}
+table.policy_table td {
+    vertical-align: initial;
+}
+.pad-right-10 {
+    padding-right: 10px;
+}
+
+table.policy-version-table,
+table.policy-table {
+    width: 100%;
+}
+table.policy-table tr:nth-child(even) {
+    background-color: #0067bf30;
+    border-bottom: 0px;
+}
+table.policy-version-table td:first-child {
+    min-width: 250px;
+}
+table.policy-version-table td {
+    padding-right: 5px 10px;
+    height: 25px;
+    border: 0px;
+
+    border-radius: 0px !important;
+}
+table.policy-version-table td,
+table.policy-version-table td p,
+table.policy_table td p,
+table.policy_table td span,
+table.policy_table td p {
+    color: #006bb1;
+}
+
+.text-strong {
+    font-weight: 600;
+}
+
+.pad-right-50 {
+    padding-right: 50px;
+}
+.bg-blue {
+    background-color: #0067bf30;
+}
+
+table.policy-version-table td:nth-child(odd) p {
+    white-space: nowrap;
+    color: #006bb1;
+}
+
+.border-bottom-top {
+    border-top: 1px solid #006bb1;
+    border-bottom: 1px solid #006bb1;
+}
+.border-b {
+    border-bottom: 1px solid #006bb1;
+}
+
+.border-none-left-right {
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.pad-left-15 {
+    padding-left: 15px;
+}
+
+.pad-bottom-25 {
+    padding-bottom: 25px;
+}
+.pad-top-5 {
+    padding-top: 5px;
+}
+.pad-top-bottom-5 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.pad-bottom-15 {
+    padding-bottom: 15px;
+}
+.pad-bottom-10 {
+    padding-bottom: 10px;
+}
+.pad-top-10 {
+    padding-top: 10px;
+}
+
+table.dunamis_leavePolicy {
+    width: 100%;
+}
+table.dunamis_leavePolicy tr td {
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    text-align: justify;
+}
+table.dunamis_leavePolicy tr td h6 {
+    white-space: nowrap;
+    color: #c9ab27;
+}
+table.dunamis_leavePolicy ul li {
+    padding: 0 0.5em;
+}
+table.dunamis_leavePolicy ul li::marker {
+    content: "•";
+    font-size: 1.6em;
+    line-height: 0.8em;
+    padding-right: 0.5em;
+}
+
+.border-yellow-t-b {
+    border-top: 0.1em solid #c9ab27;
+    border-bottom: 0.1em solid #c9ab27;
+}
+.text-yellow {
+    color: #c9ab27;
+}
+
+.padding-t-b {
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+}
+
+.text-bolder {
+    font-weight: 700;
+}
+
+ol li::marker {
+    font-weight: 700;
+}
+
+.controls_table td {
+    padding: 0.3em 0.5em;
+    border: 0.1em solid #b9b9b9;
+}
+.controls_table th {
+    padding: 0.2em 0.5em;
+    background-color: #a5a5a5;
+    border: 0.1em solid #b9b9b9;
+    white-space: nowrap;
+}
+.controls_table tr:first-child th:first-child,
+.controls_table tr:first-child th:last-child {
+    border-radius: 0 !important;
+}

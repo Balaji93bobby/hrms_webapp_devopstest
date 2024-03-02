@@ -1,0 +1,15 @@
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus {
+    color: #495057 !important;
+    font-size: 15px !important;
+    ;
+    font-weight: 600 !important;
+
+}
+
+.breadcrumb {
+    list-style: none;
+}
+
+
+
+

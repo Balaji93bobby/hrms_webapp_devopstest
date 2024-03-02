@@ -1,0 +1,56 @@
+@import "./components/table";
+@import "./utilities/variable";
+@import "./components/card";
+@import "./components/calendar";
+// @import "./utilities/helpers";
+
+
+* {
+    // font-size: 1vw;
+    font-weight: $font-weight-medium;
+    box-sizing: border-box;
+}
+
+// label,
+// p,
+// span {
+//     color: $gray-600;
+// }
+
+body {
+    // background-color: $bg-body;
+    background-color: $bg-body;
+}
+
+.collapse {
+    visibility: visible !important;
+}
+
+.investment_dropDown .dropdown-toggle:after {
+    display: none;
+}
+
+.investment_dropDown .dropdown-menu {
+    min-width: 120px;
+}
+
+.nav-tabs-dashed .nav-item .nav-link.active::after {
+    content: "";
+    height: 2px;
+    width: 100%;
+    left: 0px;
+    position: absolute;
+    background-color: #F9BE00;
+    bottom: 0px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 5px;
+}
+
+
+.main-content {
+    transition: all 0.1s ease-out;
+    overflow: hidden;
+    padding-bottom: 80px;
+}
+
+

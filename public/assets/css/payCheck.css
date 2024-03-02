@@ -1,0 +1,391 @@
+.pay-summary-border svg {
+    border: 1px solid #c9cede;
+    border-radius: 50%;
+    padding: 4px;
+    height: 143px !important;
+    width: 143px !important;
+}
+
+.pay-chart-column {
+    margin-left: 50px !important;
+}
+
+.take-home-bar,
+.deductions-bar,
+.cross-pay-bar {
+    height: 5px;
+    width: 20px;
+}
+
+.take-home-bar {
+    background: #17b510;
+}
+
+.cross-pay-bar {
+    background: #9d3074;
+}
+
+.deductions-bar {
+    background: #3d2fff;
+}
+
+.dotted-line {
+    border-top: 2px dashed #f1f3f4;
+}
+
+.opacity-low {
+    opacity: 0.2;
+}
+
+.opacity-medium {
+    opacity: 0.5;
+}
+
+/* .dotted-line i,span{
+    opacity: 1;
+} */
+
+/* .nav-tabs .nav-link {
+    padding: 10px 214px;
+} */
+
+.nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+    border-top: 5px solid #002f56 !important;
+}
+
+/* .declaration-card .declaration-important-card,.house-card .declaration-important-card {
+    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+    background: #ff000014;
+} */
+
+.bg-light-red,
+.bg-medium-red {
+    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px !important;
+}
+
+.bg-light-red {
+    background: #ff000014 !important;
+}
+
+.bg-medium-red {
+    background: #ff000029 !important;
+}
+
+.small-card {
+    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px !important;
+    height: 90px !important;
+}
+
+.tax-one,
+.tax-three,
+.tax-two {
+    position: relative;
+    padding: 0px 0px 0px 25px;
+}
+
+.tax-details .tax-one::before {
+    background-color: #0ff70f;
+}
+
+.tax-details .tax-two::before {
+    background-color: #9c3073;
+}
+
+.tax-details .tax-three::before {
+    background-color: #0fd4f7;
+}
+
+.tax-details .tax-one::before,
+.tax-two::before,
+.tax-three::before {
+    position: absolute;
+    top: 9px;
+    left: 0;
+    content: "";
+    height: 5px;
+    width: 20px;
+    margin: 0px 10px 0px 0px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.tax-table th p {
+    margin: 0px;
+    color: #fff;
+}
+
+.tax-table th p {
+    position: relative;
+}
+
+.tax-table th p.th-one::before,
+p.th-two::before,
+p.th-three::before {
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    content: "";
+    height: 5px;
+    width: 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.tax-table th p.th-three::before {
+    background-color: #0fd4f7;
+}
+.tax-table th p.th-one::before {
+    background-color: #0ff70f;
+}
+
+.tax-table th p.th-two::before {
+    background-color: #9c3073;
+}
+
+.tax-table th p::before {
+}
+
+.chart {
+    height: 200px;
+    width: 200px;
+    background-color: red;
+    /* For browsers that do not support gradients */
+    background-image: conic-gradient(
+        red 0deg,
+        red 90deg,
+        yellow 90deg,
+        yellow 180deg,
+        green 180deg,
+        green 270deg,
+        blue 270deg
+    );
+    border-radius: 50%;
+}
+
+/* chart */
+
+figure {
+    background-color: transparent;
+    display: block;
+    height: 140px;
+    border: 1px solid #eee;
+    border-radius: 50%;
+    position: relative;
+    font-size: 16px;
+    font-size: 1vw;
+    width: 140px;
+    /* padding-bottom: 40em; */
+    margin: 0 !important;
+}
+
+.pie-chart svg {
+    display: block;
+    height: 130px;
+
+    width: 130px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    overflow: visible;
+}
+
+circle {
+    fill: rgba(0, 0, 0, 0);
+    stroke-width: 31.8309886184;
+    stroke-dasharray: 0, 0, 0, 100;
+    stroke-dashoffset: 25;
+    -webkit-animation: pie1 3s infinite ease both;
+    animation: pie1 6s ease both;
+}
+
+.pie1 {
+    stroke: #9c3073;
+}
+
+.pie2 {
+    stroke: #26d9d9;
+    -webkit-animation-name: pie2;
+    animation-name: pie2;
+}
+
+.pie3 {
+    stroke: #18b710;
+    -webkit-animation-name: pie3;
+    animation-name: pie3;
+}
+
+.pie4 {
+    stroke: #3d2fff;
+    -webkit-animation-name: pie4;
+    animation-name: pie4;
+}
+
+/*
+   pie percentage made by stroke-dasharray.
+   stroke-dasharray format is...
+
+   keyframe 100% : 0 offset this-percentage rest
+
+   I added keyframe 50% for infinite presentation.
+  */
+
+/* 1st pie is 40% */
+@-webkit-keyframes pie1 {
+    50%,
+    100% {
+        stroke-dasharray: 40, 60, 0, 0;
+    }
+}
+
+@keyframes pie1 {
+    50%,
+    100% {
+        stroke-dasharray: 40, 60, 0, 0;
+    }
+}
+
+/* 2nd pie is 30% */
+@-webkit-keyframes pie2 {
+    50%,
+    100% {
+        stroke-dasharray: 0, 40, 30, 30;
+    }
+}
+
+@keyframes pie2 {
+    50%,
+    100% {
+        stroke-dasharray: 0, 40, 30, 30;
+    }
+}
+
+/* 3rd pie is 30% */
+@-webkit-keyframes pie3 {
+    50%,
+    100% {
+        stroke-dasharray: 0, 70, 20, 10;
+    }
+}
+
+@keyframes pie3 {
+    50%,
+    100% {
+        stroke-dasharray: 0, 70, 20, 10;
+    }
+}
+
+/* 4th pie is 10% */
+@-webkit-keyframes pie4 {
+    50%,
+    100% {
+        stroke-dasharray: 0, 90, 10, 0;
+    }
+}
+
+@keyframes pie4 {
+    50%,
+    100% {
+        stroke-dasharray: 0, 90, 10, 0;
+    }
+}
+
+.force-overflow {
+    height: 69px;
+    overflow-y: hidden;
+}
+
+.force-overflow:hover {
+    overflow-y: scroll;
+}
+
+.force-overflow::-webkit-scrollbar {
+    width: 5px;
+}
+
+.force-overflow::-webkit-scrollbar-track {
+    /* width: 5px; */
+    box-shadow: inset 0 0 5px #cacaca;
+}
+
+.force-overflow::-ms-thumb,
+.force-overflow::-moz-range-thumb,
+.force-overflow::-webkit-scrollbar-thumb {
+    background-color: #405189;
+    border-radius: 5px;
+}
+
+.force-overflow::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #cacaca;
+}
+
+.currency {
+    position: relative;
+}
+.currency p,
+h6 {
+    z-index: 10;
+}
+.currency-bg {
+    position: absolute;
+    opacity: 0.1;
+    font-size: 60px !important;
+    z-index: 1;
+    right: 0px;
+    color: #ff5a38;
+}
+
+/* salary details */
+
+.salary-header {
+    padding: 0;
+    overflow: visible;
+    border-bottom: 1px solid #eee;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 44px;
+    padding-left: 0;
+}
+
+/* investments  */
+
+table tr td .upload_file {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+table tr td .upload_file i.fa-upload {
+    font-size: 16px;
+    cursor: pointer;
+    color: #338fed;
+}
+table tr td .upload_file i.fa-upload input[type="file"] {
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    width: -webkit-fill-available;
+}
+
+.investment_dropDown .dropdown-toggle:after {
+    display: none;
+}
+
+.investment_dropDown .dropdown-menu {
+    min-width: 120px;
+}
+table.investment_table tr td {
+    text-align: center;
+    white-space: nowrap;
+}
+table.investment_table tr td:nth-child(2) {
+    width: 350px;
+    white-space:initial;
+}
+table.investment_table tr th {
+    text-align: center;
+    white-space: nowrap;
+}
